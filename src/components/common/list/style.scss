@@ -1,0 +1,49 @@
+.custom-list {
+    .title {
+        font-size: 17px !important;
+        a {
+            color: #222 !important;
+        }
+    }
+
+    .custom-list-inner {
+        width: 100%;
+        overflow: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+        .custom-card:first-child {
+            margin-left: 0 !important;
+            margin-right: 17px !important;
+        }
+
+        .custom-card:last-child {
+            margin-left: 17px !important;
+            margin-right: 0 !important;
+        }
+    }
+}
+
+/* custom scrollbar */
+/* width */
+.custom-list-inner::-webkit-scrollbar {
+    height: 12px;
+}
+
+/* Track */
+.custom-list-inner::-webkit-scrollbar-track {
+    background: #eee;
+    border-radius: 12px;
+}
+
+/* Handle */
+.custom-list-inner::-webkit-scrollbar-thumb {
+    background: rgb(170, 166, 166);
+    border-radius: 12px;
+}
+
+/* Handle on hover */
+.custom-list-inner::-webkit-scrollbar-thumb:hover {
+    background: rgb(155, 155, 155);
+}
