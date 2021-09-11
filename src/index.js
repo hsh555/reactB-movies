@@ -5,11 +5,15 @@ import RouteHandler from "./router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import "./index.scss";
+import { Provider } from "react-redux";
+import store from "./store";
 
 ReactDOM.render(
   <React.StrictMode>
     <div className="app">
-      <RouteHandler />
+      <Provider store={store}>
+        <RouteHandler />
+      </Provider>
     </div>
   </React.StrictMode>,
   document.getElementById("root")

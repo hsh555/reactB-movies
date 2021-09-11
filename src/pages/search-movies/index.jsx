@@ -5,29 +5,28 @@ import { Link, useLocation, useRouteMatch, useParams } from "react-router-dom";
 import CardMovie from "../../components/base/card-movie";
 import Loader from "../../components/common/loader";
 import {
-  genreMoviesFetch,
   popularMoviesListFetch,
   searchMovieFetch,
 } from "../../store/public/action";
 import { scrollToTop } from "../../utils/funcs";
 import "./style.scss";
 
-const SearchMovies = () => {
-  const { genreMovies, toggleLoading } = useSelector(
+const SearchMovies = ( ) => {
+  const { searchMovies, toggleLoading } = useSelector(
     (state) => state.publicReducer
   );
   const dispatch = useDispatch();
 
-  let { genreId } = useParams();
+  let { query } = useParams();
 
   useEffect(() => {
     dispatch(
-      genreMoviesFetch([
-        `https://api.themoviedb.org/3/discover/movie?api_key=9ebc8a9ee76ea9d34180fb6bb7b7ac14&with_genres=${genreId}`,
+      searchMovieFetch([
+        `https://api.themoviedb.org/3/search/movie?api_key=9ebc8a9ee76ea9d34180fb6bb7b7ac14&query=${query}`,
       ])
     );
     scrollToTop();
-  }, [genreId]);
+  }, [query]);
 
   return (
     <Container className="custom-container pt-5" id="moviesList">
@@ -35,7 +34,7 @@ const SearchMovies = () => {
         <Loader />
       ) : (
         <Row>
-          {genreMovies.map((item) => {
+          {searchMovies.map((item) => {
             return (
               <Col sm={6} md={3} lg={2} className="custom-col">
                 <CardMovie data={item} type={"movie"} />

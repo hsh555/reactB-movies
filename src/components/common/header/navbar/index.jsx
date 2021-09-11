@@ -12,8 +12,25 @@ import {
 import "./style.scss";
 import logo from "../../../../assets/images/logo2.png";
 import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
 
 const NavBar = () => {
+  const searchValue = useRef("");
+  const [inputValue, setInputValue] = useState("");
+
+  const handleOnChange = (e) => {
+    const value = e.target.value;
+    if (value.length >= 1) {
+      setInputValue(value);
+    }
+  };
+
+  const handleSearchClick = (e) => {
+    if(inputValue.length < 1) {
+      e.preventDefault();
+    }
+  }
+
   return (
     <Navbar expand="lg" className="custom-navbar">
       <Navbar.Brand href="#home">
@@ -38,30 +55,14 @@ const NavBar = () => {
             id="basic-nav-dropdown"
             className="custom-dropdown"
           >
-            <Link className="dropdown-item" to="/dfd">
-              comedy
+            <Link className="dropdown-item" to="/movie/popular">
+              popular
             </Link>
-            <Link className="dropdown-item" to="/dfd">
-              action
+            <Link className="dropdown-item" to="/movie/top_rated">
+              top rated
             </Link>
-            <Link className="dropdown-item" to="/dfd">
-              war
-            </Link>
-          </NavDropdown>
-
-          <NavDropdown
-            title="TV"
-            id="basic-nav-dropdown"
-            className="custom-dropdown"
-          >
-            <Link className="dropdown-item" to="/dfd">
-              comedy
-            </Link>
-            <Link className="dropdown-item" to="/dfd">
-              action
-            </Link>
-            <Link className="dropdown-item" to="/dfd">
-              war
+            <Link className="dropdown-item" to="/movie/upcoming">
+              upcoming
             </Link>
           </NavDropdown>
         </Nav>
@@ -71,8 +72,16 @@ const NavBar = () => {
               type="text"
               placeholder="Search..."
               className="mr-sm-2"
+              ref={searchValue}
+              onChange={handleOnChange}
             />
-            <Button className="search-btn">Search</Button>
+            <Link
+              to={`/movie/search/${inputValue}`}
+              className="btn btn-primary"
+              onClick={handleSearchClick}
+            >
+              Search
+            </Link>
           </InputGroup>
         </Form>
       </Navbar.Collapse>

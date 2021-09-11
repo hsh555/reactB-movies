@@ -1,0 +1,28 @@
+#moviesList {
+    .custom-col {
+        display: flex;
+        justify-content: space-between !important;
+        .custom-card {
+            flex-basis: 100% !important;
+            max-width: 100% !important;
+            min-width: 100% !important;
+            margin-bottom: 1.3rem !important;
+        }
+    }
+
+    .custom-paginaion {
+        li.page-item {
+            .page-link {
+                width: 40px !important;
+                height: 40px !important;
+                background: #fff !important;
+                border-radius: 100% !important;
+                text-align: center !important;
+                font-size: 12px;
+                line-height: 28px;
+                margin: 0 2px !important;
+                color: #555;
+            }
+        }
+    }
+}

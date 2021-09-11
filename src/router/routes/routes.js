@@ -10,6 +10,7 @@ import {
 } from "../../pages";
 import MainLayout from "../../components/layouts/main-layout";
 import FullWidthLayout from "../../components/layouts/fullwidth-layout";
+import SearchMovies from "../../pages/search-movies";
 
 const routes = [
   {
@@ -64,6 +65,13 @@ const routes = [
   },
   {
     id: 7,
+    name: "moviesSearch",
+    path: routePathes.MOVIES_SEARCH,
+    component: SearchMovies,
+    layout: MainLayout,
+  },
+  {
+    id: 8,
     name: "NotFound",
     path: routePathes.NOT_FOUND,
     component: NotFoundPage,

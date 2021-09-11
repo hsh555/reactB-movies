@@ -1,5 +1,9 @@
 const Content = ({ children }) => {
-  return <div className="content py-4">{children}</div>;
+  return (
+    <div className="content" style={{ minHeight: "calc(100vh - 90px)" }}>
+      {children}
+    </div>
+  );
 };
 
 export default Content;
